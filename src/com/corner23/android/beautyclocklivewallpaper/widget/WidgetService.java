@@ -113,9 +113,16 @@ public class WidgetService extends Service implements SharedPreferences.OnShared
 		
 		int width = bitmap.getWidth();
 		int height = bitmap.getHeight();
+		if (width == 0 || height == 0) {
+			return null;
+		}
 		
-		int maxWidth = (int) (mScreenWidth * 0.7);
-		int maxHeight = (int) (mScreenHeight * 0.8);
+		if (width < mScreenWidth && height < mScreenHeight) {
+			return null;
+		}
+				
+		int maxWidth = (int) (mScreenWidth * 0.9);
+		int maxHeight = (int) (mScreenHeight * 0.7);
 /*		
 		if (height > maxHeight) {
 			double ratio = (double) maxHeight / height;
