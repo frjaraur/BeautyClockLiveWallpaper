@@ -142,7 +142,11 @@ public class UpdateService extends Service implements SharedPreferences.OnShared
 			if (intent.getAction().equals(Intent.ACTION_TIMEZONE_CHANGED)) {
 				String tz = intent.getStringExtra("time-zone");
 				mTime = new Time(TimeZone.getTimeZone(tz).getID());
-				UpdatePictures(false);
+				UpdatePictures(true);
+				
+				Log.d(TAG, "Broadcast Wallpaper update !!");
+				Intent i = new Intent(BROADCAST_WALLPAPER_UPDATE);
+				sendBroadcast(i);
 				return;
 			}
 			
