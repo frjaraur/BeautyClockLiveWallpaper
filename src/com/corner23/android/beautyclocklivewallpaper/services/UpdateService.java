@@ -121,6 +121,10 @@ public class UpdateService extends Service implements SharedPreferences.OnShared
 				registerTimeBroadcastReceiver();
 				if (!mFetchWhenScreenOff) {
 					UpdatePictures(false);
+					
+					Log.d(TAG, "Broadcast Wallpaper update !!");
+					Intent i = new Intent(BROADCAST_WALLPAPER_UPDATE);
+					sendBroadcast(i);
 				}
 	    	} else if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
 	            // Log.i(TAG, "Intent.ACTION_SCREEN_OFF"); 
